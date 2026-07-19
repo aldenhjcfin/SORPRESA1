@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no">
+    <title>Para Ti ♋</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="nebulosa-fondo">
+        <div class="estrellas-estaticas"></div>
+        <div class="estrella-fugaz fugaz-1"></div>
+        <div class="estrella-fugaz fugaz-2"></div>
+        <div class="estrella-fugaz fugaz-3"></div>
+    </div>
+
+    <!-- Pantalla 1: Constelación y Contraseña -->
+    <div id="pantalla-inicio" class="pantalla active">
+        <div class="constelacion-container">
+            <svg class="dibujo-constelacion" width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+                <line x1="50" y1="50" x2="100" y2="100" stroke="#c5c6c7" stroke-width="2" opacity="0.5"/>
+                <line x1="100" y1="100" x2="130" y2="160" stroke="#c5c6c7" stroke-width="2" opacity="0.5"/>
+                <line x1="100" y1="100" x2="160" y2="70" stroke="#c5c6c7" stroke-width="2" opacity="0.5"/>
+                <circle cx="50" cy="50" r="4" fill="#ffffff" filter="url(#glow)"/>
+                <circle cx="100" cy="100" r="6" fill="#66fcf1" filter="url(#glow)"/> 
+                <circle cx="130" cy="160" r="4" fill="#ffffff" filter="url(#glow)"/>
+                <circle cx="160" cy="70" r="4" fill="#ffffff" filter="url(#glow)"/>
+            </svg>
+            <h1 class="titulo-magico">Te encontré entre un millón de estrellas</h1>
+            <p class="pista">El día que comenzaste a brillar en el mundo <br>+<br> El día que comenzaste a brillar conmigo.</p>
+        </div>
+
+        <div class="caja-password">
+            <input type="text" id="codigo-input" maxlength="4" placeholder="••••">
+            <button id="btn-desbloquear">Descubrir</button>
+            <p id="mensaje-error" class="oculto">Esa no es la clave correcta, piénsalo bien 😉</p>
+        </div>
+    </div>
+
+    <!-- Pantalla 2: Corazón 3D -->
+    <div id="pantalla-corazon" class="pantalla oculto">
+        <canvas id="heartCanvas"></canvas>
+        <div id="mensaje-girar" class="oculto">
+            <h2>El viaje comienza</h2>
+            <p>Gira tu celular en horizontal 🔄</p>
+        </div>
+        <div id="desbloqueo-estelar" class="oculto">
+            <div class="texto-estelar">Arrastra para viajar ➔</div>
+            <div id="estrella-viaje">
+                <div class="rayos-principales"></div>
+                <div class="rayos-diagonales"></div>
+                <div class="nucleo-blanco"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla 3: Máquina del Tiempo -->
+    <div id="pantalla-timeline" class="pantalla oculto">
+        <div id="parallax-bg-1" class="parallax-layer"></div>
+        <div id="parallax-bg-2" class="parallax-layer"></div>
+        
+        <div id="universo-escenarios"></div>
+
+        <div id="hud-control">
+            <div id="riel-central">
+                <div class="punto-riel" style="left: 0%;"></div>
+                <div class="punto-riel" style="left: 14%;"></div>
+                <div class="punto-riel" style="left: 28%;"></div>
+                <div class="punto-riel" style="left: 42%;"></div>
+                <div class="punto-riel" style="left: 56%;"></div>
+                <div class="punto-riel" style="left: 70%;"></div>
+                <div class="punto-riel" style="left: 84%;"></div>
+                <div class="punto-riel" style="left: 100%;"></div>
+                
+                <div id="orbe-arrastre">
+                    <span class="orbe-texto">Tira ➔</span>
+                    <div class="orbe-destello"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla 4: Constelación de Fotos Oculta -->
+    <div id="pantalla-constelacion" class="oculto">
+        <div class="constelacion-wrapper">
+            <svg class="lineas-svg">
+                <line x1="55%" y1="20%" x2="50%" y2="50%" class="linea-brillante" />
+                <line x1="50%" y1="50%" x2="20%" y2="80%" class="linea-brillante" />
+                <line x1="50%" y1="50%" x2="80%" y2="75%" class="linea-brillante" />
+            </svg>
+            <div class="foto-nodo" style="top: 20%; left: 55%;"><img src="" id="nodo-1"></div>
+            <div class="foto-nodo" style="top: 50%; left: 50%;"><img src="" id="nodo-2"></div>
+            <div class="foto-nodo" style="top: 80%; left: 20%;"><img src="" id="nodo-3"></div>
+            <div class="foto-nodo" style="top: 75%; left: 80%;"><img src="" id="nodo-4"></div>
+        </div>
+        <button id="btn-cerrar-constelacion">Cerrar Constelación ✖</button>
+    </div>
+
+    <!-- PANTALLA 5: SORPRESA FINAL MATRIX Y MENSAJE -->
+    <div id="pantalla-final" class="pantalla oculto">
+        <canvas id="matrix-canvas"></canvas>
+        <div id="countdown-container">
+            <h1 id="countdown-text">3</h1>
+            <button id="btn-continuar-matrix" class="btn-matrix oculto">Continuar </button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 6: EL REWIND DE FOTOS EN 3D -->
+    <div id="pantalla-rewind" class="pantalla oculto">
+        <h2 class="titulo-rewind">Nuestro Rewind ❤️</h2>
+        <div class="carousel-3d-container">
+            <div class="carousel-3d" id="carousel-3d">
+                <!-- Las fotos se inyectan aquí con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+<!-- Reproductor oculto -->
+    <audio id="musica-fondo" loop>
+        <source src="cancion.m4a" type="audio/mp4">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
